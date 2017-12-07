@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django import forms
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -14,3 +15,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'text',)
